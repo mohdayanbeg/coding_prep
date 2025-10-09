@@ -1,0 +1,31 @@
+What is an Array?
+An array is a collection of elements of the same type placed in contiguous memory locations. Elements are accessed by their index, starting from 0.
+
+Declaring and Initializing Arrays in C++
+cpp
+int arr[5];               // Declares an array of size 5 (uninitialized)
+int arr2[5] = {1, 2, 3};  // Initializes first 3 elements; rest are 0
+int arr3[] = {10, 20, 30, 40}; // Size inferred as 4
+Basic Operations on Arrays
+1. Traversal: Print all elements
+cpp
+for(int i = 0; i < 5; i++) {
+    cout << arr2[i] << " ";
+}
+2. Insertion: Add or update an element
+Since arrays have fixed size in C++, insertion means updating or assigning value at an index:
+
+cpp
+arr2[3] = 50; // Update element at index 3
+3. Deletion: Remove element (conceptually)
+Arrays cannot dynamically remove elements; typically to "delete" at index i, shift all elements after i to left:
+
+cpp
+for(int i = deleteIndex; i < 4; i++) {
+    arr2[i] = arr2[i+1]; // Shift elements left
+}
+4. Updating:
+Simply assign a new value at a given index:
+
+cpp
+arr2[0] = 100;
