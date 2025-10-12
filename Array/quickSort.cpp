@@ -1,47 +1,44 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
-
+#include <bits/stdc++.h>
 using namespace std;
 
-int partition(vector<int>& arr, int low, int high) {
-    int pivot = arr[high]; 
-    int i = (low - 1); 
-
-    for (int j = low; j <= high - 1; j++) {
-        if (arr[j] <= pivot) {
-            i++; 
-            swap(arr[i], arr[j]);
-        }
+void print(int arr[], int n)
+{
+    cout<<'[';
+    for(int i=0;i<n;i++){
+        if(i!=n-1)
+        cout<<arr[i]<<",";
+        else cout<<arr[i];
     }
-    
-    swap(arr[i + 1], arr[high]);
-    
-    return (i + 1);
+    cout<<']';
 }
 
-void quickSort(vector<int>& arr, int low, int high) {
-    if (low < high) {
-        int p_index = partition(arr, low, high);
-        quickSort(arr, low, p_index - 1);
-        quickSort(arr, p_index + 1, high);
+void quickSort(int arr[], int s, int e)
+{
+    if(s<e){
+        int pivot=e;
+        int i=s-1;
+        int j=s;
+        while(j<pivot){
+            if(arr[j]<arr[pivot]){
+                ++i;
+                swap(arr[i],arr[j]);
+            }
+            j++;
+        }
+        ++i;
+        swap(arr[i],arr[pivot]);
+        quickSort(arr,s,i-1);
+        quickSort(arr,i+1,e);
     }
 }
 
-int main() {
-    vector<int> data = {10, 7, 8, 9, 1, 5, 12, 4};
-    int n = data.size();
+int main()
+{
+    int arr[] = {7, 3, 2, 6, 8, 5, 9, 1, 4};
+    int n = sizeof(arr)/sizeof(arr[0]);
 
-    quickSort(data, 0, n - 1);
+    quickSort(arr, 0, n-1);
 
-    cout << "Sorted array: [";
-    for (size_t i = 0; i < data.size(); ++i) {
-        cout << data[i];
-        if (i < data.size() - 1) {
-            cout << ", ";
-        }
-    }
-    cout << "]" << endl;
-    
-    return 0;
+
+    print(arr,n);
 }
