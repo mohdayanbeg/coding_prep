@@ -1,6 +1,4 @@
-
-#import <bits/stdc++.h>
-#import <vector>
+#include <bits/stdc++.h>
 using namespace std;
 class Solution {
     public:
